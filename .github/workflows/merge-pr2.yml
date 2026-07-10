@@ -1,0 +1,22 @@
+name: Merge PR #2
+
+on:
+  push:
+    branches:
+      - copilot/copilotsetupnextjs-structure-again
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark PR as ready and merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr ready 2 --repo beeradllc/Beeradllc.grithub.io || true
+          gh pr merge 2 --repo beeradllc/Beeradllc.grithub.io --merge \
+            --subject "Merge PR #2: Add complete BeeRad LLC Next.js website with security hardening"
