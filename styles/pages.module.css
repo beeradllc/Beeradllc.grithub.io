@@ -532,10 +532,6 @@
     flex-direction: column;
   }
 
-  .heroButtons {
-    flex-direction: column;
-  }
-
   .primaryBtn,
   .secondaryBtn {
     width: 100%;

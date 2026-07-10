@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { timingSafeEqual } from 'crypto';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,7 +14,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Admin access not configured' }, { status: 500 });
     }
 
-    if (password === adminPassword) {
+    const inputBuffer = Buffer.from(password);
+    const storedBuffer = Buffer.from(adminPassword);
+
+    const passwordsMatch =
+      inputBuffer.length === storedBuffer.length &&
+      timingSafeEqual(inputBuffer, storedBuffer);
+
+    if (passwordsMatch) {
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
