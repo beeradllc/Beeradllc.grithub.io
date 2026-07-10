@@ -43,7 +43,10 @@ export default function ContactPage() {
         setStatus('error');
       }
     } catch {
-      setErrorMessage('Network error. Please try again or call us directly.');
+      // API not available (e.g. static hosting) — prompt the user to contact directly.
+      setErrorMessage(
+        'The online form is not available on this deployment. Please call (806) 632-9458 or email contact@beeradllc.com directly.'
+      );
       setStatus('error');
     }
   };
