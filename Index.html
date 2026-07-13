@@ -41,10 +41,29 @@
             color: #ffd700;
         }
 
+        .logo-link {
+            display: inline-block;
+            text-decoration: none;
+        }
+
         .logo .site-logo {
             height: 48px;
             width: auto;
             display: block;
+            opacity: 0;
+            transform: translateY(6px);
+            animation: logoFadeIn 0.7s ease-out forwards;
+        }
+
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         nav a {
@@ -85,6 +104,9 @@
             height: auto;
             display: block;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: logoFadeIn 0.9s ease-out 0.15s forwards;
         }
 
         .hero h2 {
@@ -300,7 +322,9 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="https://github.com/user-attachments/assets/e494a054-4647-4cec-bce6-093c2b150eb1" alt="BeeRad LLC Logo" class="site-logo">
+                <a href="#home" class="logo-link" aria-label="Go to home section">
+                    <img src="https://github.com/user-attachments/assets/e494a054-4647-4cec-bce6-093c2b150eb1" alt="BeeRad LLC Logo" class="site-logo">
+                </a>
             </div>
             <div>
                 <a href="#home">Home</a>
